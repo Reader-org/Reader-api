@@ -3,12 +3,31 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+require('dotenv').config();
 
 app.use(express.json());
 
 app.use(cors());
 
 app.use(morgan('dev'));
+
+const URL = process.env.MONGODB;
+
+mongoose.connect(URL,({
+    useCreateIndex:true,
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}));
+
+let db = mongoose.connection;
+
+db.once('open',()=>{
+    console.log('Db connected to app bro');
+});
+
+db.on('error',(err)=>{
+    console.log(`There is an error while connecting to db ${err}`);
+});
 
 
 app.use('/courses/',require('./routes/courses.routes'));
