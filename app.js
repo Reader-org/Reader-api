@@ -32,7 +32,6 @@ db.on('error',(err)=>{
     console.log(`There is an error while connecting to db ${err}`);
 });
 
-// postAll.PostAll();
 
 app.use('/courses/',require('./routes/courses.routes'));
 app.use('/category',require('./routes/category.routes'));

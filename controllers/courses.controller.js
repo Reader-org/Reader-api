@@ -74,6 +74,47 @@ exports.getById = (req,res)=>{
     })
 }
 
+exports.getCourseByCategory = async(req,res)=>{
+
+    const regex = new RegExp(escapeRegex(req.params.category), 'gi');
+    Courses.find({Category:regex})
+    .sort({
+        title:1
+    })
+    .select('_id title Instructor Description Language image Level Category')
+    .exec()
+    .then(data=>{
+        let courses = data.map(eachcourse=>{
+            return {
+                id:eachcourse._id,
+                title:eachcourse.title,
+                Instructor:eachcourse.Instructor,
+                Description:eachcourse.Description,
+                Language:eachcourse.Language,
+                image:eachcourse.image,
+                Level:eachcourse.Level,
+                Category:eachcourse.Category,
+                request:{
+                    type:'GET',
+                    Url:`http://localhost:5000/courses/get/${eachcourse._id}`
+                }
+            }
+        }) 
+        res.status(200).json({
+            message:'Courses found successfully',
+            length:courses.length,
+            courses:courses
+        });
+    })
+    .catch(err=>{
+        console.log('Code Red'+err);
+        res.status(404).json({
+            message:err
+        });
+    });
+}
+
+
 exports.postCourse = (req,res)=>{
     let course = new Courses();
     course.title = req.body.title;
@@ -116,3 +157,8 @@ exports.deleteCourse = (req,res)=>{
         })
     })
 }
+
+
+const escapeRegex =(text)=> {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
