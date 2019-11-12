@@ -2,9 +2,29 @@ let Courses = require('../models/courses.model');
 
 exports.getCourses = (req,res)=>{
     Courses.find()
+    .select('_id title Instructor Description Language image Level')
     .exec()
-    .then(courses=>{
-        res.status(200).json(courses);
+    .then(data=>{
+        let courses = data.map(eachcourse=>{
+            return {
+                id:eachcourse._id,
+                title:eachcourse.title,
+                Instructor:eachcourse.Instructor,
+                Description:eachcourse.Description,
+                Language:eachcourse.Language,
+                image:eachcourse.image,
+                Level:eachcourse.Level,
+                request:{
+                    type:'GET',
+                    Url:`http://localhost:5000/courses/get/${eachcourse._id}`
+                }
+            }
+        }) 
+        res.status(200).json({
+            message:'Courses found successfully',
+            length:courses.length,
+            courses:courses
+        });
     })
     .catch(err=>{
         console.log('Code Red'+err);
@@ -16,10 +36,27 @@ exports.getCourses = (req,res)=>{
 
 exports.getById = (req,res)=>{
     Courses.findById(req.params.id)
+    .select('_id title Instructor Description Language Url image Level')
     .exec()
     .then(course=>{
         if(course){
-            res.status(200).json(course)
+            let data = {
+                id:course._id,
+                title:course.title,
+                Instructor:course.Instructor,
+                Description:course.Description,
+                Language:course.Language,
+                image:course.image,
+                Level:course.Level,
+                request:{
+                    type:'GET',
+                    Url:`${course.Url}`
+                }
+            }
+            res.status(200).json({
+                message:'Course found successful',
+                course:data
+            })
         }
         else{
             res.status(404).json({
