@@ -19,6 +19,8 @@ mongoose.connect(URL,({
     useUnifiedTopology:true
 }));
 
+mongoose.Promise = global.Promise;
+
 let db = mongoose.connection;
 
 db.once('open',()=>{
@@ -31,6 +33,7 @@ db.on('error',(err)=>{
 
 
 app.use('/courses/',require('./routes/courses.routes'));
+app.use('/category',require('./routes/category.routes'));
 
 app.use((req,res,next)=>{
     let error = new Error('Not Found');
