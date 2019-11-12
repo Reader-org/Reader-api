@@ -17,7 +17,7 @@ exports.getCourses = (req,res)=>{
                 Category:eachcourse.Category,
                 request:{
                     type:'GET',
-                    Url:`http://localhost:5000/courses/get/${eachcourse._id}`
+                    Url:`https://sudocourses.herokuapp.com/courses/get/${eachcourse._id}`
                 }
             }
         }) 
@@ -96,7 +96,7 @@ exports.getCourseByCategory = async(req,res)=>{
                 Category:eachcourse.Category,
                 request:{
                     type:'GET',
-                    Url:`http://localhost:5000/courses/get/${eachcourse._id}`
+                    Url:`https://sudocourses.herokuapp.com/courses/get/${eachcourse._id}`
                 }
             }
         }) 
