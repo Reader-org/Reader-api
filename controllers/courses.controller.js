@@ -2,7 +2,7 @@ let Courses = require('../models/courses.model');
 
 exports.getCourses = (req,res)=>{
     Courses.find()
-    .select('_id title Instructor Description Language image Level')
+    .select('_id title Instructor Description Language image Level Category')
     .exec()
     .then(data=>{
         let courses = data.map(eachcourse=>{
@@ -14,6 +14,7 @@ exports.getCourses = (req,res)=>{
                 Language:eachcourse.Language,
                 image:eachcourse.image,
                 Level:eachcourse.Level,
+                Category:eachcourse.Category,
                 request:{
                     type:'GET',
                     Url:`http://localhost:5000/courses/get/${eachcourse._id}`
@@ -36,7 +37,7 @@ exports.getCourses = (req,res)=>{
 
 exports.getById = (req,res)=>{
     Courses.findById(req.params.id)
-    .select('_id title Instructor Description Language Url image Level')
+    .select('_id title Instructor Description Language Url image Level Category')
     .exec()
     .then(course=>{
         if(course){
@@ -48,6 +49,7 @@ exports.getById = (req,res)=>{
                 Language:course.Language,
                 image:course.image,
                 Level:course.Level,
+                Category:course.Category,
                 request:{
                     type:'GET',
                     Url:`${course.Url}`
@@ -82,6 +84,7 @@ exports.postCourse = (req,res)=>{
     course.github = req.body.Github;
     course.image = req.body.image || 'https://cdn.pixabay.com/photo/2019/10/17/09/18/robot-in-space-4556429_960_720.png';
     course.Level = req.body.Level;
+    course.Category = req.body.Category;
     course.save()
     .then(()=>{
         console.log(course);

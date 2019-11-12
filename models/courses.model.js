@@ -32,6 +32,9 @@ let schema = new mongoose.Schema({
     },
     Level:{
         type:String
+    },
+    Category:{
+        type:String,
     }
 
 },{

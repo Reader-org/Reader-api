@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const postAll = require('./controllers/populator');
 require('dotenv').config();
 
 app.use(express.json());
@@ -31,6 +32,7 @@ db.on('error',(err)=>{
     console.log(`There is an error while connecting to db ${err}`);
 });
 
+// postAll.PostAll();
 
 app.use('/courses/',require('./routes/courses.routes'));
 app.use('/category',require('./routes/category.routes'));
