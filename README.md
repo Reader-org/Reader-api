@@ -6,7 +6,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
 
 ## Api End Points Are
 
-+ /courses/get
++ ### /courses/get
     ```
     Method : 'Get'
 
@@ -51,7 +51,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
 
     ```
 
-+ courses/get/:id
++ ### courses/get/:id
 
  ```
     Method : 'Get'
@@ -80,7 +80,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
  ```
 
 
- + courses/get/category/:category
+ + ### courses/get/category/:category
 
   ```
   Method : `Get`
