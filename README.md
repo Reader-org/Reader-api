@@ -26,6 +26,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
             "Language": "English",
             "image": "https://cdn.pixabay.com/photo/2019/10/17/09/18/robot-in-space-4556429_960_720.png",
             "Level": "Intermediate,Beginner",
+            "Link":"link to the course site",
             "Category": "Android",
             "request": {
                 "type": "GET",
@@ -40,6 +41,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
              "Language": "English",
             "image": "https://cdn.pixabay.com/photo/2019/10/17/09/18/robot-in-space-4556429_960_720.png",
             "Level": "Intermediate,Beginner",
+            "Link":"link to the course site",
             "Category": "Aws",
             "request": {
                 "type": "GET",
@@ -69,6 +71,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
         "Language": "English",
         "image": "https://cdn.pixabay.com/photo/2019/10/17/09/18/robot-in-space-4556429_960_720.png",
         "Level": "Intermediate,Beginner",
+        "Link":"link to the course site",
         "Category": "Android",
         "request": {
             "type": "GET",
@@ -99,6 +102,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
             "Language": "English",
             "image": "https://cdn.pixabay.com/photo/2019/10/17/09/18/robot-in-space-4556429_960_720.png",
             "Level": "Intermediate",
+            "Link":"link to the course site",
             "Category": "Sass",
             "request": {
                 "type": "GET",
@@ -114,6 +118,7 @@ An api for getting the list of somecourses which help the viewrs to understand c
             "image": "https://cdn.pixabay.com/photo/2019/10/17/09/18/robot-in-space-4556429_960_720.png",
             "Level": "Beginner",
             "Category": "Sass",
+            "Link":"link to the course site",
             "request": {
                 "type": "GET",
                 "Url": "http://sudocourses.herokuapp.com/courses/get/5dcaebfbc9583939587b712b"
