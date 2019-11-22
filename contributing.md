@@ -17,6 +17,6 @@ Thats it folks these are the conventions you  need to follow.
 <br>
 We are always open for changes which make our api better and help the budding programmers out there in their journey for knowledge gain and fun.
 
-Happy Hacking 
+Happy Hacking :smiley:
 
-and Peace
+and Peace :v:
