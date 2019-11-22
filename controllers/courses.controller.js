@@ -2,7 +2,7 @@ let Courses = require('../models/courses.model');
 
 exports.getCourses = (req,res)=>{
     Courses.find()
-    .select('_id title Instructor Description Language image Level Category')
+    .select('_id title Instructor Description Language image Level Category Url')
     .exec()
     .then(data=>{
         let courses = data.map(eachcourse=>{
@@ -15,6 +15,7 @@ exports.getCourses = (req,res)=>{
                 image:eachcourse.image,
                 Level:eachcourse.Level,
                 Category:eachcourse.Category,
+                link:eachcourse.Url,
                 request:{
                     type:'GET',
                     Url:`https://sudocourses.herokuapp.com/courses/get/${eachcourse._id}`
@@ -81,7 +82,7 @@ exports.getCourseByCategory = async(req,res)=>{
     .sort({
         title:1
     })
-    .select('_id title Instructor Description Language image Level Category')
+    .select('_id title Instructor Description Language image Level Category Url')
     .exec()
     .then(data=>{
         let courses = data.map(eachcourse=>{
@@ -92,6 +93,7 @@ exports.getCourseByCategory = async(req,res)=>{
                 Description:eachcourse.Description,
                 Language:eachcourse.Language,
                 image:eachcourse.image,
+                link:eachcourse.Url,
                 Level:eachcourse.Level,
                 Category:eachcourse.Category,
                 request:{

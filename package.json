@@ -4,6 +4,7 @@
   "description": "An api for getting articles",
   "main": "app.js",
   "dependencies": {
+    "concurrently": "^5.0.0",
     "cors": "^2.8.5",
     "devicons": "^1.8.0",
     "dotenv": "^8.2.0",
@@ -13,11 +14,12 @@
     "mongoose": "^5.7.9",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.4",
-    "os": "^0.1.1"
+    "os": "^0.1.1",
+    "popper": "^1.0.1"
   },
   "scripts": {
-    "start":"node app.js",
-    "dev":"nodemon app.js"
+    "start": "concurrently \"node app.js \" \" cd ../client/ && yarn start\" ",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
